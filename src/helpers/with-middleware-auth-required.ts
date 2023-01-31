@@ -8,7 +8,7 @@ import { SessionCache } from '../session';
  *
  * ```js
  * // middleware.js
- * import { withMiddlewareAuthRequired } from '@auth0/nextjs-auth0/middleware';
+ * import { withMiddlewareAuthRequired } from '@auth0/nextjs-auth0/edge';
  *
  * export default withMiddlewareAuthRequired();
  * ```
@@ -17,7 +17,7 @@ import { SessionCache } from '../session';
  *
  * ```js
  * // middleware.js
- * import { withMiddlewareAuthRequired } from '@auth0/nextjs-auth0/middleware';
+ * import { withMiddlewareAuthRequired } from '@auth0/nextjs-auth0/edge';
  *
  * export default withMiddlewareAuthRequired();
  *
@@ -31,7 +31,7 @@ import { SessionCache } from '../session';
  *
  * ```js
  * // middleware.js
- * import { withMiddlewareAuthRequired, getSession } from '@auth0/nextjs-auth0/middleware';
+ * import { withMiddlewareAuthRequired, getSession } from '@auth0/nextjs-auth0/edge';
  *
  * export default withMiddlewareAuthRequired(async function middleware(req) {
  *   const res = NextResponse.next();
@@ -55,7 +55,7 @@ export default function withMiddlewareAuthRequiredFactory(
   return function withMiddlewareAuthRequired(middleware?): NextMiddleware {
     return async function wrappedMiddleware(...args) {
       const [req] = args;
-      const { pathname, origin } = req.nextUrl;
+      const { pathname, origin, search } = req.nextUrl;
       const ignorePaths = [login, callback, unauthorized, '/_next', '/favicon.ico'];
       if (ignorePaths.some((p) => pathname.startsWith(p))) {
         return;
@@ -70,7 +70,7 @@ export default function withMiddlewareAuthRequiredFactory(
           return NextResponse.rewrite(new URL(unauthorized, origin), { status: 401 });
         }
         return NextResponse.redirect(
-          new URL(`${login}?returnTo=${encodeURIComponent(req.nextUrl.toString())}`, origin)
+          new URL(`${login}?returnTo=${encodeURIComponent(`${pathname}${search}`)}`, origin)
         );
       }
       const res = await (middleware && middleware(...args));

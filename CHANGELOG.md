@@ -1,5 +1,21 @@
 # Change Log
 
+## [v2.2.1](https://github.com/auth0/nextjs-auth0/tree/v2.2.1) (2023-01-27)
+[Full Changelog](https://github.com/auth0/nextjs-auth0/compare/v2.2.0...v2.2.1)
+
+**Fixed**
+- Remove type from export in d.ts files [\#1037](https://github.com/auth0/nextjs-auth0/pull/1037) ([ewanharris](https://github.com/ewanharris))
+
+## [v2.2.0](https://github.com/auth0/nextjs-auth0/tree/v2.2.0) (2023-01-24)
+[Full Changelog](https://github.com/auth0/nextjs-auth0/compare/v2.1.0...v2.2.0)
+
+**Added**
+- [SDK-3862] Add support for JWT client authentication [\#1029](https://github.com/auth0/nextjs-auth0/pull/1029) ([ewanharris](https://github.com/ewanharris))
+
+**Fixed**
+- withMiddlewareAuthRequired returnTo should be a relative url [\#1028](https://github.com/auth0/nextjs-auth0/pull/1028) ([adamjmcgrath](https://github.com/adamjmcgrath))
+- Infer user exists if WithPageAuthRequired page is rendered [\#1014](https://github.com/auth0/nextjs-auth0/pull/1014) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
 ## [v2.1.0](https://github.com/auth0/nextjs-auth0/tree/v2.1.0) (2023-01-11)
 [Full Changelog](https://github.com/auth0/nextjs-auth0/compare/v2.0.1...v2.1.0)
 

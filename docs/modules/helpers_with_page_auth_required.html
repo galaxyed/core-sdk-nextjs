@@ -1,402 +1,81 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>helpers/with-page-auth-required | @auth0/nextjs-auth0</title>
-	<meta name="description" content="Documentation for @auth0/nextjs-auth0">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../assets/css/main.css">
-	<script async src="../assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="../index.html" class="title">@auth0/nextjs-auth0</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="../index.html">@auth0/nextjs-auth0</a>
-				</li>
-				<li>
-					<a href="helpers_with_page_auth_required.html">helpers/with-page-auth-required</a>
-				</li>
-			</ul>
-			<h1>Module helpers/with-page-auth-required</h1>
-		</div>
-	</div>
-</header>
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>helpers/with-page-auth-required | @auth0/nextjs-auth0</title><meta name="description" content="Documentation for @auth0/nextjs-auth0"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base="..">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">@auth0/nextjs-auth0</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
 <div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Server Type aliases</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="helpers_with_page_auth_required.html#getserversidepropsresultwithsession" class="tsd-kind-icon">Get<wbr>Server<wbr>Side<wbr>Props<wbr>Result<wbr>With<wbr>Session</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="helpers_with_page_auth_required.html#pageroute" class="tsd-kind-icon">Page<wbr>Route</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="helpers_with_page_auth_required.html#withpageauthrequired" class="tsd-kind-icon">With<wbr>Page<wbr>Auth<wbr>Required</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="helpers_with_page_auth_required.html#withpageauthrequiredoptions" class="tsd-kind-icon">With<wbr>Page<wbr>Auth<wbr>Required<wbr>Options</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Server Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-					<a name="getserversidepropsresultwithsession" class="tsd-anchor"></a>
-					<h3>Get<wbr>Server<wbr>Side<wbr>Props<wbr>Result<wbr>With<wbr>Session</h3>
-					<div class="tsd-signature tsd-kind-icon">Get<wbr>Server<wbr>Side<wbr>Props<wbr>Result<wbr>With<wbr>Session&lt;P&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">GetServerSidePropsResult</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>user<span class="tsd-signature-symbol">?: </span><a href="../interfaces/session_session.claims.html" class="tsd-signature-type" data-tsd-kind="Interface">Claims</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/auth0/nextjs-auth0/blob/39e9d2e/src/helpers/with-page-auth-required.ts#L23">src/helpers/with-page-auth-required.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>If you wrap your <code>getServerSideProps</code> with <a href="helpers_with_page_auth_required.html#withpageauthrequired">WithPageAuthRequired</a> your props object will be augmented with
-							the user property, which will be the user&#39;s <a href="../interfaces/session_session.claims.html">Claims</a>.</p>
-						</div>
-						<pre><code class="language-js"><span style="color: #008000">// pages/profile.js</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">withPageAuthRequired</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@auth0/nextjs-auth0&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #AF00DB">default</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Profile</span><span style="color: #000000">({ </span><span style="color: #001080">user</span><span style="color: #000000"> }) {</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #800000">&lt;div&gt;</span><span style="color: #000000">Hello </span><span style="color: #0000FF">{</span><span style="color: #001080">user</span><span style="color: #000000FF">.</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #800000">&lt;/div&gt;</span><span style="color: #000000">;</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">getServerSideProps</span><span style="color: #000000"> = </span><span style="color: #795E26">withPageAuthRequired</span><span style="color: #000000">();</span>
-</code></pre>
-					</div>
-					<h4 class="tsd-type-parameters-title">Type parameters</h4>
-					<ul class="tsd-type-parameters">
-						<li>
-							<h4>P = <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-					<a name="pageroute" class="tsd-anchor"></a>
-					<h3>Page<wbr>Route</h3>
-					<div class="tsd-signature tsd-kind-icon">Page<wbr>Route&lt;P, Q&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>cts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">GetServerSidePropsContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="helpers_with_page_auth_required.html#getserversidepropsresultwithsession" class="tsd-signature-type" data-tsd-kind="Type alias">GetServerSidePropsResultWithSession</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/auth0/nextjs-auth0/blob/39e9d2e/src/helpers/with-page-auth-required.ts#L30">src/helpers/with-page-auth-required.ts:30</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A page route that has been augmented with <a href="helpers_with_page_auth_required.html#withpageauthrequired">WithPageAuthRequired</a>.</p>
-						</div>
-					</div>
-					<h4 class="tsd-type-parameters-title">Type parameters</h4>
-					<ul class="tsd-type-parameters">
-						<li>
-							<h4>P</h4>
-						</li>
-						<li>
-							<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ParsedUrlQuery</span> = <span class="tsd-signature-type">ParsedUrlQuery</span></h4>
-						</li>
-					</ul>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>cts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">GetServerSidePropsContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="helpers_with_page_auth_required.html#getserversidepropsresultwithsession" class="tsd-signature-type" data-tsd-kind="Type alias">GetServerSidePropsResultWithSession</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>cts: <span class="tsd-signature-type">GetServerSidePropsContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="helpers_with_page_auth_required.html#getserversidepropsresultwithsession" class="tsd-signature-type" data-tsd-kind="Type alias">GetServerSidePropsResultWithSession</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="withpageauthrequired" class="tsd-anchor"></a>
-					<h3>With<wbr>Page<wbr>Auth<wbr>Required</h3>
-					<div class="tsd-signature tsd-kind-icon">With<wbr>Page<wbr>Auth<wbr>Required<span class="tsd-signature-symbol">:</span> &lt;P, Q&gt;<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">?: </span><a href="helpers_with_page_auth_required.html#withpageauthrequiredoptions" class="tsd-signature-type" data-tsd-kind="Type alias">WithPageAuthRequiredOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="helpers_with_page_auth_required.html#pageroute" class="tsd-signature-type" data-tsd-kind="Type alias">PageRoute</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/auth0/nextjs-auth0/blob/39e9d2e/src/helpers/with-page-auth-required.ts#L90">src/helpers/with-page-auth-required.ts:90</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Wrap your <code>getServerSideProps</code> with this method to make sure the user is authenticated before
-							visiting the page.</p>
-						</div>
-						<pre><code class="language-js"><span style="color: #008000">// pages/protected-page.js</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">withPageAuthRequired</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@auth0/nextjs-auth0&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #AF00DB">default</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">ProtectedPage</span><span style="color: #000000">() {</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #800000">&lt;div&gt;</span><span style="color: #000000">Protected content</span><span style="color: #800000">&lt;/div&gt;</span><span style="color: #000000">;</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">getServerSideProps</span><span style="color: #000000"> = </span><span style="color: #795E26">withPageAuthRequired</span><span style="color: #000000">();</span>
-</code></pre>
-						<p>If the user visits <code>/protected-page</code> without a valid session, it will redirect the user to the
-						login page. Then they will be returned to <code>/protected-page</code> after login.</p>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-has-type-parameter">
-									<li class="tsd-signature tsd-kind-icon">&lt;P, Q&gt;<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">?: </span><a href="helpers_with_page_auth_required.html#withpageauthrequiredoptions" class="tsd-signature-type" data-tsd-kind="Type alias">WithPageAuthRequiredOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="helpers_with_page_auth_required.html#pageroute" class="tsd-signature-type" data-tsd-kind="Type alias">PageRoute</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-type-parameters-title">Type parameters</h4>
-										<ul class="tsd-type-parameters">
-											<li>
-												<h4>P</h4>
-											</li>
-											<li>
-												<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ParsedUrlQuery</span> = <span class="tsd-signature-type">ParsedUrlQuery</span></h4>
-											</li>
-										</ul>
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <a href="helpers_with_page_auth_required.html#withpageauthrequiredoptions" class="tsd-signature-type" data-tsd-kind="Type alias">WithPageAuthRequiredOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="helpers_with_page_auth_required.html#pageroute" class="tsd-signature-type" data-tsd-kind="Type alias">PageRoute</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-					<a name="withpageauthrequiredoptions" class="tsd-anchor"></a>
-					<h3>With<wbr>Page<wbr>Auth<wbr>Required<wbr>Options</h3>
-					<div class="tsd-signature tsd-kind-icon">With<wbr>Page<wbr>Auth<wbr>Required<wbr>Options&lt;P, Q&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>getServerSideProps<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">GetServerSideProps</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>returnTo<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/auth0/nextjs-auth0/blob/39e9d2e/src/helpers/with-page-auth-required.ts#L65">src/helpers/with-page-auth-required.ts:65</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>If you have a custom returnTo url you should specify it in <code>returnTo</code>.</p>
-						</div>
-						<p>You can pass in your own <code>getServerSideProps</code> method, the props returned from this will be
-							merged with the user props. You can also access the user session data by calling <code>getSession</code>
-						inside of this method. For example:</p>
-						<pre><code class="language-js"><span style="color: #008000">// pages/protected-page.js</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">getSession</span><span style="color: #000000">, </span><span style="color: #001080">withPageAuthRequired</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@auth0/nextjs-auth0&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #AF00DB">default</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">ProtectedPage</span><span style="color: #000000">({ </span><span style="color: #001080">user</span><span style="color: #000000">, </span><span style="color: #001080">customProp</span><span style="color: #000000"> }) {</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #800000">&lt;div&gt;</span><span style="color: #000000">Protected content</span><span style="color: #800000">&lt;/div&gt;</span><span style="color: #000000">;</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">getServerSideProps</span><span style="color: #000000"> = </span><span style="color: #795E26">withPageAuthRequired</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #008000">// returnTo: &#039;/unauthorized&#039;,</span>
-<span style="color: #000000">  </span><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #795E26">getServerSideProps</span><span style="color: #000000">(</span><span style="color: #001080">ctx</span><span style="color: #000000">) {</span>
-<span style="color: #000000">    </span><span style="color: #008000">// access the user session if needed</span>
-<span style="color: #000000">    </span><span style="color: #008000">// const session = await getSession(ctx.req, ctx.res);</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> { </span>
-<span style="color: #000000">      </span><span style="color: #001080">props:</span><span style="color: #000000"> { </span>
-<span style="color: #000000">        </span><span style="color: #008000">// customProp: &#039;bar&#039;,</span>
-<span style="color: #000000">      }</span>
-<span style="color: #000000">    };</span>
-<span style="color: #000000">  }</span>
-<span style="color: #000000">});</span>
-</code></pre>
-					</div>
-					<h4 class="tsd-type-parameters-title">Type parameters</h4>
-					<ul class="tsd-type-parameters">
-						<li>
-							<h4>P = <span class="tsd-signature-type">any</span></h4>
-						</li>
-						<li>
-							<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ParsedUrlQuery</span> = <span class="tsd-signature-type">ParsedUrlQuery</span></h4>
-						</li>
-					</ul>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> get<wbr>Server<wbr>Side<wbr>Props<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">GetServerSideProps</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Q</span><span class="tsd-signature-symbol">&gt;</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> return<wbr>To<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-			</section>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="../index.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="client.html">client</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="client_use_user.html">client/use-<wbr>user</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="client_with_page_auth_required.html">client/with-<wbr>page-<wbr>auth-<wbr>required</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="config.html">config</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="edge.html">edge</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="handlers.html">handlers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="handlers_auth.html">handlers/auth</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="handlers_callback.html">handlers/callback</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="handlers_login.html">handlers/login</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="handlers_logout.html">handlers/logout</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="handlers_profile.html">handlers/profile</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="helpers.html">helpers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="helpers_testing.html">helpers/testing</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="helpers_with_api_auth_required.html">helpers/with-<wbr>api-<wbr>auth-<wbr>required</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="helpers_with_middleware_auth_required.html">helpers/with-<wbr>middleware-<wbr>auth-<wbr>required</a>
-					</li>
-					<li class="current tsd-kind-module">
-						<a href="helpers_with_page_auth_required.html">helpers/with-<wbr>page-<wbr>auth-<wbr>required</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="session.html">session</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="session_get_access_token.html">session/get-<wbr>access-<wbr>token</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="session_get_session.html">session/get-<wbr>session</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="session_session.html">session/session</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="session_update_session.html">session/update-<wbr>session</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="utils_errors.html">utils/errors</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="version.html">version</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="helpers_with_page_auth_required.html#getserversidepropsresultwithsession" class="tsd-kind-icon">Get<wbr>Server<wbr>Side<wbr>Props<wbr>Result<wbr>With<wbr>Session</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="helpers_with_page_auth_required.html#pageroute" class="tsd-kind-icon">Page<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="helpers_with_page_auth_required.html#withpageauthrequired" class="tsd-kind-icon">With<wbr>Page<wbr>Auth<wbr>Required</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="helpers_with_page_auth_required.html#withpageauthrequiredoptions" class="tsd-kind-icon">With<wbr>Page<wbr>Auth<wbr>Required<wbr>Options</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer>
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="overlay"></div>
-<script src="../assets/js/main.js"></script>
-</body>
-</html>
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb">
+<li><a href="../index.html">@auth0/nextjs-auth0</a></li>
+<li><a href="helpers_with_page_auth_required.html">helpers/with-page-auth-required</a></li></ul>
+<h1>Module helpers/with-page-auth-required</h1></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/auth0/nextjs-auth0/blob/5d772e0/src/helpers/with-page-auth-required.ts#L1">helpers/with-page-auth-required.ts:1</a></li></ul></aside>
+<section class="tsd-panel-group">
+<section class="tsd-panel tsd-typography"></section></section>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<h3 class="tsd-index-heading uppercase">Index</h3>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Type Aliases - Server</h3>
+<div class="tsd-index-list"><a href="../types/helpers_with_page_auth_required.GetServerSidePropsResultWithSession.html" class="tsd-index-link tsd-kind-type-alias tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg><span>Get<wbr/>Server<wbr/>Side<wbr/>Props<wbr/>Result<wbr/>With<wbr/>Session</span></a>
+<a href="../types/helpers_with_page_auth_required.PageRoute.html" class="tsd-index-link tsd-kind-type-alias tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg><span>Page<wbr/>Route</span></a>
+<a href="../types/helpers_with_page_auth_required.WithPageAuthRequired.html" class="tsd-index-link tsd-kind-type-alias tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg><span>With<wbr/>Page<wbr/>Auth<wbr/>Required</span></a>
+<a href="../types/helpers_with_page_auth_required.WithPageAuthRequiredOptions.html" class="tsd-index-link tsd-kind-type-alias tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg><span>With<wbr/>Page<wbr/>Auth<wbr/>Required<wbr/>Options</span></a>
+</div></section></section></section></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current"><a href="../index.html">@auth0/nextjs-<wbr/>auth0</a>
+<ul>
+<li class="tsd-kind-module"><a href="client.html">client</a></li>
+<li class="tsd-kind-module"><a href="client_use_user.html">client/use-<wbr/>user</a></li>
+<li class="tsd-kind-module"><a href="client_with_page_auth_required.html">client/with-<wbr/>page-<wbr/>auth-<wbr/>required</a></li>
+<li class="tsd-kind-module"><a href="config.html">config</a></li>
+<li class="tsd-kind-module"><a href="edge.html">edge</a></li>
+<li class="tsd-kind-module"><a href="handlers.html">handlers</a></li>
+<li class="tsd-kind-module"><a href="handlers_auth.html">handlers/auth</a></li>
+<li class="tsd-kind-module"><a href="handlers_callback.html">handlers/callback</a></li>
+<li class="tsd-kind-module"><a href="handlers_login.html">handlers/login</a></li>
+<li class="tsd-kind-module"><a href="handlers_logout.html">handlers/logout</a></li>
+<li class="tsd-kind-module"><a href="handlers_profile.html">handlers/profile</a></li>
+<li class="tsd-kind-module"><a href="helpers.html">helpers</a></li>
+<li class="tsd-kind-module"><a href="helpers_testing.html">helpers/testing</a></li>
+<li class="tsd-kind-module"><a href="helpers_with_api_auth_required.html">helpers/with-<wbr/>api-<wbr/>auth-<wbr/>required</a></li>
+<li class="tsd-kind-module"><a href="helpers_with_middleware_auth_required.html">helpers/with-<wbr/>middleware-<wbr/>auth-<wbr/>required</a></li>
+<li class="current selected tsd-kind-module"><a href="helpers_with_page_auth_required.html">helpers/with-<wbr/>page-<wbr/>auth-<wbr/>required</a></li>
+<li class="tsd-kind-module"><a href="index.html">index</a></li>
+<li class="tsd-kind-module"><a href="session.html">session</a></li>
+<li class="tsd-kind-module"><a href="session_get_access_token.html">session/get-<wbr/>access-<wbr/>token</a></li>
+<li class="tsd-kind-module"><a href="session_get_session.html">session/get-<wbr/>session</a></li>
+<li class="tsd-kind-module"><a href="session_session.html">session/session</a></li>
+<li class="tsd-kind-module"><a href="session_update_session.html">session/update-<wbr/>session</a></li>
+<li class="tsd-kind-module"><a href="utils_errors.html">utils/errors</a></li>
+<li class="tsd-kind-module"><a href="version.html">version</a></li></ul></li></ul></div></details></nav>
+<nav class="tsd-navigation secondary menu-sticky">
+<ul>
+<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="../types/helpers_with_page_auth_required.GetServerSidePropsResultWithSession.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Get<wbr/>Server<wbr/>Side<wbr/>Props<wbr/>Result<wbr/>With<wbr/>Session</a></li>
+<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="../types/helpers_with_page_auth_required.PageRoute.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Page<wbr/>Route</a></li>
+<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="../types/helpers_with_page_auth_required.WithPageAuthRequired.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>With<wbr/>Page<wbr/>Auth<wbr/>Required</a></li>
+<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="../types/helpers_with_page_auth_required.WithPageAuthRequiredOptions.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>With<wbr/>Page<wbr/>Auth<wbr/>Required<wbr/>Options</a></li></ul></nav></div></div>
+<div class="overlay"></div><script src="../assets/main.js"></script></body></html>
