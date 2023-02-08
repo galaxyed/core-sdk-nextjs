@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import { getSession as auth0GetSession } from '@auth0/nextjs-auth0';
+import { getSession as icanidGetSession } from '@icanid/icanid-sdk-nextjs';
 import { IncomingMessage, ServerResponse } from 'http';
 import { Socket } from 'net';
 
@@ -16,7 +16,7 @@ const reqRes = () => {
 
 export function getSession() {
   const { req, res } = reqRes();
-  return auth0GetSession(req, res);
+  return icanidGetSession(req, res);
 }
 
 export default async function ExperimentalRscPage() {

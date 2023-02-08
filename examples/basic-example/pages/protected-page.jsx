@@ -1,6 +1,6 @@
 import React from 'react';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { withPageAuthRequired } from '@icanid/icanid-sdk-nextjs';
+import { useUser } from '@icanid/icanid-sdk-nextjs/client';
 
 import Layout from '../components/layout';
 

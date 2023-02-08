@@ -1,7 +1,7 @@
 {
-  "name": "@auth0/nextjs-auth0",
+  "name": "@icanid/icanid-sdk-nextjs",
   "version": "2.2.1",
-  "description": "Next.js SDK for signing in with Auth0",
+  "description": "Next.js SDK for signing in with ICANID",
   "exports": {
     ".": "./dist/index.js",
     "./client": "./dist/client/index.js",
@@ -147,9 +147,9 @@
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.*",
       "!<rootDir>/src/edge.ts",
-      "!<rootDir>/src/auth0-session/config.ts",
-      "!<rootDir>/src/auth0-session/index.ts",
-      "!<rootDir>/src/auth0-session/session-cache.ts"
+      "!<rootDir>/src/icanid-session/config.ts",
+      "!<rootDir>/src/icanid-session/index.ts",
+      "!<rootDir>/src/icanid-session/session-cache.ts"
     ],
     "coverageReporters": [
       "lcov",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@icanid/icanid-sdk-nextjs/client';
 
 import Layout from '../components/layout';
 
@@ -8,7 +8,7 @@ export default function Home(): React.ReactElement {
 
   return (
     <Layout>
-      <h1>Next.js and Auth0 Example</h1>
+      <h1>Next.js and ICANID Example</h1>
 
       {isLoading && <p>Loading login info...</p>}
 

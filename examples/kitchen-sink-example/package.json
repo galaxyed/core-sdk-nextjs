@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-auth0-kitchen-sink-example",
+  "name": "nextjs-icanid-kitchen-sink-example",
   "version": "0.0.1",
-  "description": "Typescript example for nextjs-auth0",
+  "description": "Typescript example for icanid-sdk-nextjs",
   "main": "index.js",
   "scripts": {
     "dev:local": "node server.js",
@@ -35,7 +35,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "file:../../",
+    "@icanid/icanid-sdk-nextjs": "file:../../",
     "@serverless-jwt/next": "^0.2.1",
     "next": "file:../../node_modules/next",
     "react": "file:../../node_modules/react",

@@ -1,6 +1,6 @@
 import { NextMiddleware, NextRequest, NextResponse } from 'next/server';
-import { StatelessSession } from './auth0-session/session/stateless-session';
-import { StatefulSession } from './auth0-session/session/stateful-session';
+import { StatelessSession } from './icanid-session/session/stateless-session';
+import { StatefulSession } from './icanid-session/session/stateful-session';
 import MiddlewareCookies from './utils/middleware-cookies';
 import Session from './session/session';
 import SessionCache from './session/cache';
@@ -11,15 +11,15 @@ import {
 import { getConfig, ConfigParameters } from './config';
 import { setIsUsingNamedExports, setIsUsingOwnInstance } from './utils/instance-check';
 
-export type Auth0Edge = { withMiddlewareAuthRequired: WithMiddlewareAuthRequired; getSession: GetSession };
+export type ICANIDEdge = { withMiddlewareAuthRequired: WithMiddlewareAuthRequired; getSession: GetSession };
 
 export type GetSession = (req: NextRequest, res: NextResponse) => Promise<Session | null | undefined>;
 
-export type InitAuth0 = (params?: ConfigParameters) => Auth0Edge;
+export type InitICANID = (params?: ConfigParameters) => ICANIDEdge;
 
 export { WithMiddlewareAuthRequired };
 
-let instance: Auth0Edge;
+let instance: ICANIDEdge;
 
 const genId = () => {
   const bytes = new Uint8Array(16);
@@ -29,21 +29,21 @@ const genId = () => {
     .join('');
 };
 
-function getInstance(params?: ConfigParameters): Auth0Edge {
+function getInstance(params?: ConfigParameters): ICANIDEdge {
   setIsUsingNamedExports();
   if (instance) {
     return instance;
   }
-  instance = _initAuth0(params);
+  instance = _initICANID(params);
   return instance;
 }
 
-export const initAuth0: InitAuth0 = (params?) => {
+export const initICANID: InitICANID = (params?) => {
   setIsUsingOwnInstance();
-  return _initAuth0(params);
+  return _initICANID(params);
 };
 
-const _initAuth0: InitAuth0 = (params?) => {
+const _initICANID: InitICANID = (params?) => {
   const { baseConfig, nextConfig } = getConfig({ ...params, session: { genId, ...params?.session } });
 
   // Init base layer (with base config)

@@ -1,9 +1,9 @@
 import { IncomingMessage } from 'http';
 import type { AuthorizationParameters as OidcAuthorizationParameters } from 'openid-client';
-import type { LoginOptions } from './auth0-session/config';
-import { SessionStore } from './auth0-session/session/stateful-session';
+import type { LoginOptions } from './icanid-session/config';
+import { SessionStore } from './icanid-session/session/stateful-session';
 import Session from './session/session';
-import { DeepPartial, get as getBaseConfig } from './auth0-session/get-config';
+import { DeepPartial, get as getBaseConfig } from './icanid-session/get-config';
 import type { ClientAuthMethod } from 'openid-client';
 
 /**
@@ -15,7 +15,7 @@ export interface BaseConfig {
    * to sign the transient cookies used by the login callback.
    * Provide a single string secret, but if you want to rotate the secret you can provide an array putting
    * the new secret first.
-   * You can also use the `AUTH0_SECRET` environment variable.
+   * You can also use the `ICANID_SECRET` environment variable.
    */
   secret: string | Array<string>;
 
@@ -25,10 +25,10 @@ export interface BaseConfig {
   session: SessionConfig;
 
   /**
-   * Boolean value to enable Auth0's proprietary logout feature.
-   * Since this SDK is for Auth0, it's set to `true`by default.
+   * Boolean value to enable ICANID's proprietary logout feature.
+   * Since this SDK is for ICANID, it's set to `true`by default.
    */
-  auth0Logout: boolean;
+  icanidLogout: boolean;
 
   /**
    *  URL parameters used when redirecting users to the authorization server to log in.
@@ -62,7 +62,7 @@ export interface BaseConfig {
 
   /**
    * The root URL for the application router, for example `https://localhost`.
-   * You can also use the `AUTH0_BASE_URL` environment variable.
+   * You can also use the `ICANID_BASE_URL` environment variable.
    * If you provide a domain, we will prefix it with `https://`. This can be useful when assigning it to
    * `VERCEL_URL` for Vercel deploys.
    */
@@ -70,35 +70,35 @@ export interface BaseConfig {
 
   /**
    * The Client ID for your application.
-   * You can also use the `AUTH0_CLIENT_ID` environment variable.
+   * You can also use the `ICANID_CLIENT_ID` environment variable.
    */
   clientID: string;
 
   /**
    * The Client Secret for your application.
    * Required when requesting access tokens.
-   * You can also use the `AUTH0_CLIENT_SECRET` environment variable.
+   * You can also use the `ICANID_CLIENT_SECRET` environment variable.
    */
   clientSecret?: string;
 
   /**
    * Integer value for the system clock's tolerance (leeway) in seconds for ID token verification.`
    * Defaults to `60` seconds.
-   * You can also use the `AUTH0_CLOCK_TOLERANCE` environment variable.
+   * You can also use the `ICANID_CLOCK_TOLERANCE` environment variable.
    */
   clockTolerance: number;
 
   /**
    * Integer value for the HTTP timeout in milliseconds for authentication requests.
    * Defaults to `5000` ms.
-   * You can also use the `AUTH0_HTTP_TIMEOUT` environment variable.
+   * You can also use the `ICANID_HTTP_TIMEOUT` environment variable.
    */
   httpTimeout: number;
 
   /**
    * Boolean value to opt-out of sending the library and node version to your authorization server
-   * via the `Auth0-Client` header. Defaults to `true`.
-   * You can also use the `AUTH0_ENABLE_TELEMETRY` environment variable.
+   * via the `ICANID-Client` header. Defaults to `true`.
+   * You can also use the `ICANID_ENABLE_TELEMETRY` environment variable.
    */
   enableTelemetry: boolean;
 
@@ -124,33 +124,33 @@ export interface BaseConfig {
   /**
    * Array value of claims to remove from the ID token before storing the cookie session.
    * Defaults to `['aud', 'iss', 'iat', 'exp', 'nbf', 'nonce', 'azp', 'auth_time', 's_hash', 'at_hash', 'c_hash']`.
-   * You can also use the `AUTH0_IDENTITY_CLAIM_FILTER` environment variable.
+   * You can also use the `ICANID_IDENTITY_CLAIM_FILTER` environment variable.
    */
   identityClaimFilter: string[];
 
   /**
    * Boolean value to log the user out from the identity provider on application logout. Defaults to `true`.
-   * You can also use the `AUTH0_IDP_LOGOUT` environment variable.
+   * You can also use the `ICANID_IDP_LOGOUT` environment variable.
    */
   idpLogout: boolean;
 
   /**
    * String value for the expected ID token algorithm. Defaults to 'RS256'.
-   * You can also use the `AUTH0_ID_TOKEN_SIGNING_ALG` environment variable.
+   * You can also use the `ICANID_ID_TOKEN_SIGNING_ALG` environment variable.
    */
   idTokenSigningAlg: string;
 
   /**
    * **REQUIRED** The root URL for the token issuer with no trailing slash.
-   * This is `https://` plus your Auth0 domain.
-   * You can also use the `AUTH0_ISSUER_BASE_URL` environment variable.
+   * This is `https://` plus your ICANID domain.
+   * You can also use the `ICANID_ISSUER_BASE_URL` environment variable.
    */
   issuerBaseURL: string;
 
   /**
    * Set a fallback cookie with no `SameSite` attribute when `response_mode` is `form_post`.
    * The default `response_mode` for this SDK is `query` so this defaults to `false`
-   * You can also use the `AUTH0_LEGACY_SAME_SITE_COOKIE` environment variable.
+   * You can also use the `ICANID_LEGACY_SAME_SITE_COOKIE` environment variable.
    */
   legacySameSiteCookie: boolean;
 
@@ -162,14 +162,14 @@ export interface BaseConfig {
      * Either a relative path to the application or a valid URI to an external domain.
      * This value must be registered on the authorization server.
      * The user will be redirected to this after a logout has been performed.
-     * You can also use the `AUTH0_POST_LOGOUT_REDIRECT` environment variable.
+     * You can also use the `ICANID_POST_LOGOUT_REDIRECT` environment variable.
      */
     postLogoutRedirect: string;
 
     /**
      * Relative path to the application callback to process the response from the authorization server.
      * Defaults to `/api/auth/callback`.
-     * You can also use the `AUTH0_CALLBACK` environment variable.
+     * You can also use the `ICANID_CALLBACK` environment variable.
      */
     callback: string;
   };
@@ -177,7 +177,7 @@ export interface BaseConfig {
   /**
    * Private key for use with `private_key_jwt` clients.
    * This should be a string that is the contents of a PEM file.
-   * You can also use the `AUTH0_CLIENT_ASSERTION_SIGNING_KEY` environment variable.
+   * You can also use the `ICANID_CLIENT_ASSERTION_SIGNING_KEY` environment variable.
    */
   clientAssertionSigningKey?: string;
 
@@ -186,7 +186,7 @@ export interface BaseConfig {
    * Uses one of `token_endpoint_auth_signing_alg_values_supported` if not specified.
    * If the Authorization Server discovery document does not list `token_endpoint_auth_signing_alg_values_supported`
    * this property will be required.
-   *  You can also use the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+   *  You can also use the `ICANID_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
    */
   clientAssertionSigningAlg?: string;
 }
@@ -201,7 +201,7 @@ export interface SessionConfig {
    * String value for the cookie name used for the internal session.
    * This value must only include letters, numbers, and underscores.
    * Defaults to `appSession`.
-   * You can also use the `AUTH0_SESSION_NAME` environment variable.
+   * You can also use the `ICANID_SESSION_NAME` environment variable.
    */
   name: string;
 
@@ -225,7 +225,7 @@ export interface SessionConfig {
    * duration to be absolute, where the user gets logged out a fixed time after login
    * regardless of activity, set this to `false`.
    * Defaults to `true`.
-   * You can also use the `AUTH0_SESSION_ROLLING` environment variable.
+   * You can also use the `ICANID_SESSION_ROLLING` environment variable.
    */
   rolling: boolean;
 
@@ -234,7 +234,7 @@ export interface SessionConfig {
    * The amount of time for which the user must be idle for then to be logged out.
    * Should be `false` when rolling is `false`.
    * Defaults to `86400` seconds (1 day).
-   * You can also use the AUTH0_SESSION_ROLLING_DURATION environment variable.
+   * You can also use the ICANID_SESSION_ROLLING_DURATION environment variable.
    */
   rollingDuration: number | false;
 
@@ -243,7 +243,7 @@ export interface SessionConfig {
    * The amount of time after the user has logged in that they will be logged out.
    * Set this to `false` if you don't want an absolute duration on your session.
    * Defaults to `604800` seconds (7 days).
-   * You can also use the `AUTH0_SESSION_ABSOLUTE_DURATION` environment variable.
+   * You can also use the `ICANID_SESSION_ABSOLUTE_DURATION` environment variable.
    */
   absoluteDuration: boolean | number;
 
@@ -265,7 +265,7 @@ export interface SessionConfig {
 export interface CookieConfig {
   /**
    * Domain name for the cookie.
-   * You can also use the `AUTH0_COOKIE_DOMAIN` environment variable.
+   * You can also use the `ICANID_COOKIE_DOMAIN` environment variable.
    */
   domain?: string;
 
@@ -273,35 +273,35 @@ export interface CookieConfig {
    * Path for the cookie.
    * Defaults to `/`.
    * You should change this to be more restrictive if you application shares a domain with other apps.
-   * You can also use the `AUTH0_COOKIE_PATH` environment variable.
+   * You can also use the `ICANID_COOKIE_PATH` environment variable.
    */
   path?: string;
 
   /**
    * Set to `true` to use a transient cookie (cookie without an explicit expiration).
    * Defaults to `false`.
-   * You can also use the `AUTH0_COOKIE_TRANSIENT` environment variable.
+   * You can also use the `ICANID_COOKIE_TRANSIENT` environment variable.
    */
   transient: boolean;
 
   /**
    * Flags the cookie to be accessible only by the web server.
    * Defaults to `true`.
-   * You can also use the `AUTH0_COOKIE_HTTP_ONLY` environment variable.
+   * You can also use the `ICANID_COOKIE_HTTP_ONLY` environment variable.
    */
   httpOnly: boolean;
 
   /**
    * Marks the cookie to be used over secure channels only.
    * Defaults to the protocol of {@link BaseConfig.baseURL}.
-   * You can also use the `AUTH0_COOKIE_SECURE` environment variable.
+   * You can also use the `ICANID_COOKIE_SECURE` environment variable.
    */
   secure?: boolean;
 
   /**
    * Value of the SameSite `Set-Cookie` attribute.
    * Defaults to `lax` but will be adjusted based on {@link AuthorizationParameters.response_type}.
-   * You can also use the `AUTH0_COOKIE_SAME_SITE` environment variable.
+   * You can also use the `ICANID_COOKIE_SAME_SITE` environment variable.
    */
   sameSite: 'lax' | 'strict' | 'none';
 }
@@ -357,8 +357,8 @@ export interface NextConfig extends Pick<BaseConfig, 'identityClaimFilter'> {
  * {@link WithApiAuthRequired}, and {@link WithPageAuthRequired}).
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth } from '@icanid/icanid-sdk-nextjs';
  *
  * return handleAuth();
  * ```
@@ -368,41 +368,41 @@ export interface NextConfig extends Pick<BaseConfig, 'identityClaimFilter'> {
  *
  * ### Required
  *
- * - `AUTH0_SECRET`: See {@link secret}.
- * - `AUTH0_ISSUER_BASE_URL`: See {@link issuerBaseURL}.
- * - `AUTH0_BASE_URL`: See {@link baseURL}.
- * - `AUTH0_CLIENT_ID`: See {@link clientID}.
- * - `AUTH0_CLIENT_SECRET`: See {@link clientSecret}.
+ * - `ICANID_SECRET`: See {@link secret}.
+ * - `ICANID_ISSUER_BASE_URL`: See {@link issuerBaseURL}.
+ * - `ICANID_BASE_URL`: See {@link baseURL}.
+ * - `ICANID_CLIENT_ID`: See {@link clientID}.
+ * - `ICANID_CLIENT_SECRET`: See {@link clientSecret}.
  *
  * ### Optional
  *
- * - `AUTH0_CLOCK_TOLERANCE`: See {@link clockTolerance}.
- * - `AUTH0_HTTP_TIMEOUT`: See {@link httpTimeout}.
- * - `AUTH0_ENABLE_TELEMETRY`: See {@link enableTelemetry}.
- * - `AUTH0_IDP_LOGOUT`: See {@link idpLogout}.
- * - `AUTH0_ID_TOKEN_SIGNING_ALG`: See {@link idTokenSigningAlg}.
- * - `AUTH0_LEGACY_SAME_SITE_COOKIE`: See {@link legacySameSiteCookie}.
- * - `AUTH0_IDENTITY_CLAIM_FILTER`: See {@link identityClaimFilter}.
- * - `NEXT_PUBLIC_AUTH0_LOGIN`: See {@link NextConfig.routes}.
- * - `AUTH0_CALLBACK`: See {@link BaseConfig.routes}.
- * - `AUTH0_POST_LOGOUT_REDIRECT`: See {@link BaseConfig.routes}.
- * - `AUTH0_AUDIENCE`: See {@link BaseConfig.authorizationParams}.
- * - `AUTH0_SCOPE`: See {@link BaseConfig.authorizationParams}.
- * - `AUTH0_ORGANIZATION`: See {@link NextConfig.organization}.
- * - `AUTH0_SESSION_NAME`: See {@link SessionConfig.name}.
- * - `AUTH0_SESSION_ROLLING`: See {@link SessionConfig.rolling}.
- * - `AUTH0_SESSION_ROLLING_DURATION`: See {@link SessionConfig.rollingDuration}.
- * - `AUTH0_SESSION_ABSOLUTE_DURATION`: See {@link SessionConfig.absoluteDuration}.
- * - `AUTH0_COOKIE_DOMAIN`: See {@link CookieConfig.domain}.
- * - `AUTH0_COOKIE_PATH`: See {@link CookieConfig.path}.
- * - `AUTH0_COOKIE_TRANSIENT`: See {@link CookieConfig.transient}.
- * - `AUTH0_COOKIE_HTTP_ONLY`: See {@link CookieConfig.httpOnly}.
- * - `AUTH0_COOKIE_SECURE`: See {@link CookieConfig.secure}.
- * - `AUTH0_COOKIE_SAME_SITE`: See {@link CookieConfig.sameSite}.
- * - `AUTH0_CLIENT_ASSERTION_SIGNING_KEY`: See {@link BaseConfig.clientAssertionSigningKey}
- * - `AUTH0_CLIENT_ASSERTION_SIGNING_ALG`: See {@link BaseConfig.clientAssertionSigningAlg}
+ * - `ICANID_CLOCK_TOLERANCE`: See {@link clockTolerance}.
+ * - `ICANID_HTTP_TIMEOUT`: See {@link httpTimeout}.
+ * - `ICANID_ENABLE_TELEMETRY`: See {@link enableTelemetry}.
+ * - `ICANID_IDP_LOGOUT`: See {@link idpLogout}.
+ * - `ICANID_ID_TOKEN_SIGNING_ALG`: See {@link idTokenSigningAlg}.
+ * - `ICANID_LEGACY_SAME_SITE_COOKIE`: See {@link legacySameSiteCookie}.
+ * - `ICANID_IDENTITY_CLAIM_FILTER`: See {@link identityClaimFilter}.
+ * - `NEXT_PUBLIC_ICANID_LOGIN`: See {@link NextConfig.routes}.
+ * - `ICANID_CALLBACK`: See {@link BaseConfig.routes}.
+ * - `ICANID_POST_LOGOUT_REDIRECT`: See {@link BaseConfig.routes}.
+ * - `ICANID_AUDIENCE`: See {@link BaseConfig.authorizationParams}.
+ * - `ICANID_SCOPE`: See {@link BaseConfig.authorizationParams}.
+ * - `ICANID_ORGANIZATION`: See {@link NextConfig.organization}.
+ * - `ICANID_SESSION_NAME`: See {@link SessionConfig.name}.
+ * - `ICANID_SESSION_ROLLING`: See {@link SessionConfig.rolling}.
+ * - `ICANID_SESSION_ROLLING_DURATION`: See {@link SessionConfig.rollingDuration}.
+ * - `ICANID_SESSION_ABSOLUTE_DURATION`: See {@link SessionConfig.absoluteDuration}.
+ * - `ICANID_COOKIE_DOMAIN`: See {@link CookieConfig.domain}.
+ * - `ICANID_COOKIE_PATH`: See {@link CookieConfig.path}.
+ * - `ICANID_COOKIE_TRANSIENT`: See {@link CookieConfig.transient}.
+ * - `ICANID_COOKIE_HTTP_ONLY`: See {@link CookieConfig.httpOnly}.
+ * - `ICANID_COOKIE_SECURE`: See {@link CookieConfig.secure}.
+ * - `ICANID_COOKIE_SAME_SITE`: See {@link CookieConfig.sameSite}.
+ * - `ICANID_CLIENT_ASSERTION_SIGNING_KEY`: See {@link BaseConfig.clientAssertionSigningKey}
+ * - `ICANID_CLIENT_ASSERTION_SIGNING_ALG`: See {@link BaseConfig.clientAssertionSigningAlg}
  *
- * ### 2. Create your own instance using {@link InitAuth0}
+ * ### 2. Create your own instance using {@link InitICANID}
  *
  * If you don't want to configure the SDK with environment variables or you want more fine grained control over the
  * instance, you can create an instance yourself and use the handlers and helpers from that.
@@ -410,22 +410,22 @@ export interface NextConfig extends Pick<BaseConfig, 'identityClaimFilter'> {
  * First, export your configured instance from another module:
  *
  * ```js
- * // utils/auth0.js
- * import { initAuth0 } from '@auth0/nextjs-auth0';
+ * // utils/icanid.js
+ * import { initICANID } from '@icanid/icanid-sdk-nextjs';
  *
- * export default initAuth0({ ...ConfigParameters... });
+ * export default initICANID({ ...ConfigParameters... });
  * ```
  *
  * Then import it into your route handler:
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import auth0 from '../../../../utils/auth0';
+ * // pages/api/auth/[...icanid].js
+ * import icanid from '../../../../utils/icanid';
  *
- * return auth0.handleAuth();
+ * return icanid.handleAuth();
  * ```
  *
- * **IMPORTANT** If you use {@link InitAuth0}, you should *not* use the other named exports as they will use a different
+ * **IMPORTANT** If you use {@link InitICANID}, you should *not* use the other named exports as they will use a different
  * instance of the SDK. Also note - this is for the server side part of the SDK - you will always use named exports for
  * the front end components: {@Link UserProvider}, {@Link UseUser} and the
  * front end version of {@Link WithPageAuthRequired}
@@ -463,7 +463,7 @@ const array = (param?: string): string[] | undefined =>
  * @ignore
  */
 export const getLoginUrl = (): string => {
-  return process.env.NEXT_PUBLIC_AUTH0_LOGIN || '/api/auth/login';
+  return process.env.NEXT_PUBLIC_ICANID_LOGIN || '/api/auth/login';
 };
 
 /**
@@ -471,94 +471,94 @@ export const getLoginUrl = (): string => {
  */
 export const getConfig = (params: ConfigParameters = {}): { baseConfig: BaseConfig; nextConfig: NextConfig } => {
   // Don't use destructuring here so that the `DefinePlugin` can replace any env vars specified in `next.config.js`
-  const AUTH0_SECRET = process.env.AUTH0_SECRET;
-  const AUTH0_ISSUER_BASE_URL = process.env.AUTH0_ISSUER_BASE_URL;
-  const AUTH0_BASE_URL = process.env.AUTH0_BASE_URL;
-  const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
-  const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
-  const AUTH0_CLIENT_AUTH_METHOD = (process.env.AUTH0_CLIENT_AUTH_METHOD || 'client_secret_basic') as DeepPartial<ClientAuthMethod>;
-  const AUTH0_CLOCK_TOLERANCE = process.env.AUTH0_CLOCK_TOLERANCE;
-  const AUTH0_HTTP_TIMEOUT = process.env.AUTH0_HTTP_TIMEOUT;
-  const AUTH0_ENABLE_TELEMETRY = process.env.AUTH0_ENABLE_TELEMETRY;
-  const AUTH0_IDP_LOGOUT = process.env.AUTH0_IDP_LOGOUT;
-  const AUTH0_ID_TOKEN_SIGNING_ALG = process.env.AUTH0_ID_TOKEN_SIGNING_ALG;
-  const AUTH0_LEGACY_SAME_SITE_COOKIE = process.env.AUTH0_LEGACY_SAME_SITE_COOKIE;
-  const AUTH0_IDENTITY_CLAIM_FILTER = process.env.AUTH0_IDENTITY_CLAIM_FILTER;
-  const AUTH0_CALLBACK = process.env.AUTH0_CALLBACK;
-  const AUTH0_POST_LOGOUT_REDIRECT = process.env.AUTH0_POST_LOGOUT_REDIRECT;
-  const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE;
-  const AUTH0_SCOPE = process.env.AUTH0_SCOPE;
-  const AUTH0_ORGANIZATION = process.env.AUTH0_ORGANIZATION;
-  const AUTH0_SESSION_NAME = process.env.AUTH0_SESSION_NAME;
-  const AUTH0_SESSION_ROLLING = process.env.AUTH0_SESSION_ROLLING;
-  const AUTH0_SESSION_ROLLING_DURATION = process.env.AUTH0_SESSION_ROLLING_DURATION;
-  const AUTH0_SESSION_ABSOLUTE_DURATION = process.env.AUTH0_SESSION_ABSOLUTE_DURATION;
-  const AUTH0_SESSION_STORE_ID_TOKEN = process.env.AUTH0_SESSION_STORE_ID_TOKEN;
-  const AUTH0_COOKIE_DOMAIN = process.env.AUTH0_COOKIE_DOMAIN;
-  const AUTH0_COOKIE_PATH = process.env.AUTH0_COOKIE_PATH;
-  const AUTH0_COOKIE_TRANSIENT = process.env.AUTH0_COOKIE_TRANSIENT;
-  const AUTH0_COOKIE_HTTP_ONLY = process.env.AUTH0_COOKIE_HTTP_ONLY;
-  const AUTH0_COOKIE_SECURE = process.env.AUTH0_COOKIE_SECURE;
-  const AUTH0_COOKIE_SAME_SITE = process.env.AUTH0_COOKIE_SAME_SITE;
-  const AUTH0_CLIENT_ASSERTION_SIGNING_KEY = process.env.AUTH0_CLIENT_ASSERTION_SIGNING_KEY;
-  const AUTH0_CLIENT_ASSERTION_SIGNING_ALG = process.env.AUTH0_CLIENT_ASSERTION_SIGNING_ALG;
+  const ICANID_SECRET = process.env.ICANID_SECRET;
+  const ICANID_ISSUER_BASE_URL = process.env.ICANID_ISSUER_BASE_URL;
+  const ICANID_BASE_URL = process.env.ICANID_BASE_URL;
+  const ICANID_CLIENT_ID = process.env.ICANID_CLIENT_ID;
+  const ICANID_CLIENT_SECRET = process.env.ICANID_CLIENT_SECRET;
+  const ICANID_CLIENT_AUTH_METHOD = (process.env.ICANID_CLIENT_AUTH_METHOD || 'client_secret_basic') as DeepPartial<ClientAuthMethod>;
+  const ICANID_CLOCK_TOLERANCE = process.env.ICANID_CLOCK_TOLERANCE;
+  const ICANID_HTTP_TIMEOUT = process.env.ICANID_HTTP_TIMEOUT;
+  const ICANID_ENABLE_TELEMETRY = process.env.ICANID_ENABLE_TELEMETRY;
+  const ICANID_IDP_LOGOUT = process.env.ICANID_IDP_LOGOUT;
+  const ICANID_ID_TOKEN_SIGNING_ALG = process.env.ICANID_ID_TOKEN_SIGNING_ALG;
+  const ICANID_LEGACY_SAME_SITE_COOKIE = process.env.ICANID_LEGACY_SAME_SITE_COOKIE;
+  const ICANID_IDENTITY_CLAIM_FILTER = process.env.ICANID_IDENTITY_CLAIM_FILTER;
+  const ICANID_CALLBACK = process.env.ICANID_CALLBACK;
+  const ICANID_POST_LOGOUT_REDIRECT = process.env.ICANID_POST_LOGOUT_REDIRECT;
+  const ICANID_AUDIENCE = process.env.ICANID_AUDIENCE;
+  const ICANID_SCOPE = process.env.ICANID_SCOPE;
+  const ICANID_ORGANIZATION = process.env.ICANID_ORGANIZATION;
+  const ICANID_SESSION_NAME = process.env.ICANID_SESSION_NAME;
+  const ICANID_SESSION_ROLLING = process.env.ICANID_SESSION_ROLLING;
+  const ICANID_SESSION_ROLLING_DURATION = process.env.ICANID_SESSION_ROLLING_DURATION;
+  const ICANID_SESSION_ABSOLUTE_DURATION = process.env.ICANID_SESSION_ABSOLUTE_DURATION;
+  const ICANID_SESSION_STORE_ID_TOKEN = process.env.ICANID_SESSION_STORE_ID_TOKEN;
+  const ICANID_COOKIE_DOMAIN = process.env.ICANID_COOKIE_DOMAIN;
+  const ICANID_COOKIE_PATH = process.env.ICANID_COOKIE_PATH;
+  const ICANID_COOKIE_TRANSIENT = process.env.ICANID_COOKIE_TRANSIENT;
+  const ICANID_COOKIE_HTTP_ONLY = process.env.ICANID_COOKIE_HTTP_ONLY;
+  const ICANID_COOKIE_SECURE = process.env.ICANID_COOKIE_SECURE;
+  const ICANID_COOKIE_SAME_SITE = process.env.ICANID_COOKIE_SAME_SITE;
+  const ICANID_CLIENT_ASSERTION_SIGNING_KEY = process.env.ICANID_CLIENT_ASSERTION_SIGNING_KEY;
+  const ICANID_CLIENT_ASSERTION_SIGNING_ALG = process.env.ICANID_CLIENT_ASSERTION_SIGNING_ALG;
 
   const baseURL =
-    AUTH0_BASE_URL && !/^https?:\/\//.test(AUTH0_BASE_URL as string) ? `https://${AUTH0_BASE_URL}` : AUTH0_BASE_URL;
+    ICANID_BASE_URL && !/^https?:\/\//.test(ICANID_BASE_URL as string) ? `https://${ICANID_BASE_URL}` : ICANID_BASE_URL;
 
   const { organization, ...baseParams } = params;
 
   const baseConfig = getBaseConfig({
-    secret: AUTH0_SECRET,
-    issuerBaseURL: AUTH0_ISSUER_BASE_URL,
+    secret: ICANID_SECRET,
+    issuerBaseURL: ICANID_ISSUER_BASE_URL,
     baseURL: baseURL,
-    clientID: AUTH0_CLIENT_ID,
-    clientSecret: AUTH0_CLIENT_SECRET,
-    clientAuthMethod: AUTH0_CLIENT_AUTH_METHOD,
-    clockTolerance: num(AUTH0_CLOCK_TOLERANCE),
-    httpTimeout: num(AUTH0_HTTP_TIMEOUT),
-    enableTelemetry: bool(AUTH0_ENABLE_TELEMETRY),
-    idpLogout: bool(AUTH0_IDP_LOGOUT, true),
-    auth0Logout: bool(AUTH0_IDP_LOGOUT, true),
-    idTokenSigningAlg: AUTH0_ID_TOKEN_SIGNING_ALG,
-    legacySameSiteCookie: bool(AUTH0_LEGACY_SAME_SITE_COOKIE),
-    identityClaimFilter: array(AUTH0_IDENTITY_CLAIM_FILTER),
+    clientID: ICANID_CLIENT_ID,
+    clientSecret: ICANID_CLIENT_SECRET,
+    clientAuthMethod: ICANID_CLIENT_AUTH_METHOD,
+    clockTolerance: num(ICANID_CLOCK_TOLERANCE),
+    httpTimeout: num(ICANID_HTTP_TIMEOUT),
+    enableTelemetry: bool(ICANID_ENABLE_TELEMETRY),
+    idpLogout: bool(ICANID_IDP_LOGOUT, true),
+    icanidLogout: bool(ICANID_IDP_LOGOUT, true),
+    idTokenSigningAlg: ICANID_ID_TOKEN_SIGNING_ALG,
+    legacySameSiteCookie: bool(ICANID_LEGACY_SAME_SITE_COOKIE),
+    identityClaimFilter: array(ICANID_IDENTITY_CLAIM_FILTER),
     ...baseParams,
     authorizationParams: {
       response_type: 'code',
-      audience: AUTH0_AUDIENCE,
-      scope: AUTH0_SCOPE,
+      audience: ICANID_AUDIENCE,
+      scope: ICANID_SCOPE,
       ...baseParams.authorizationParams
     },
     session: {
-      name: AUTH0_SESSION_NAME,
-      rolling: bool(AUTH0_SESSION_ROLLING),
+      name: ICANID_SESSION_NAME,
+      rolling: bool(ICANID_SESSION_ROLLING),
       rollingDuration:
-        AUTH0_SESSION_ROLLING_DURATION && isNaN(Number(AUTH0_SESSION_ROLLING_DURATION))
-          ? (bool(AUTH0_SESSION_ROLLING_DURATION) as false)
-          : num(AUTH0_SESSION_ROLLING_DURATION),
+        ICANID_SESSION_ROLLING_DURATION && isNaN(Number(ICANID_SESSION_ROLLING_DURATION))
+          ? (bool(ICANID_SESSION_ROLLING_DURATION) as false)
+          : num(ICANID_SESSION_ROLLING_DURATION),
       absoluteDuration:
-        AUTH0_SESSION_ABSOLUTE_DURATION && isNaN(Number(AUTH0_SESSION_ABSOLUTE_DURATION))
-          ? bool(AUTH0_SESSION_ABSOLUTE_DURATION)
-          : num(AUTH0_SESSION_ABSOLUTE_DURATION),
-      storeIDToken: bool(AUTH0_SESSION_STORE_ID_TOKEN),
+        ICANID_SESSION_ABSOLUTE_DURATION && isNaN(Number(ICANID_SESSION_ABSOLUTE_DURATION))
+          ? bool(ICANID_SESSION_ABSOLUTE_DURATION)
+          : num(ICANID_SESSION_ABSOLUTE_DURATION),
+      storeIDToken: bool(ICANID_SESSION_STORE_ID_TOKEN),
       ...baseParams.session,
       cookie: {
-        domain: AUTH0_COOKIE_DOMAIN,
-        path: AUTH0_COOKIE_PATH || '/',
-        transient: bool(AUTH0_COOKIE_TRANSIENT),
-        httpOnly: bool(AUTH0_COOKIE_HTTP_ONLY),
-        secure: bool(AUTH0_COOKIE_SECURE),
-        sameSite: AUTH0_COOKIE_SAME_SITE as 'lax' | 'strict' | 'none' | undefined,
+        domain: ICANID_COOKIE_DOMAIN,
+        path: ICANID_COOKIE_PATH || '/',
+        transient: bool(ICANID_COOKIE_TRANSIENT),
+        httpOnly: bool(ICANID_COOKIE_HTTP_ONLY),
+        secure: bool(ICANID_COOKIE_SECURE),
+        sameSite: ICANID_COOKIE_SAME_SITE as 'lax' | 'strict' | 'none' | undefined,
         ...baseParams.session?.cookie
       }
     },
     routes: {
-      callback: baseParams.routes?.callback || AUTH0_CALLBACK || '/api/auth/callback',
-      postLogoutRedirect: baseParams.routes?.postLogoutRedirect || AUTH0_POST_LOGOUT_REDIRECT
+      callback: baseParams.routes?.callback || ICANID_CALLBACK || '/api/auth/callback',
+      postLogoutRedirect: baseParams.routes?.postLogoutRedirect || ICANID_POST_LOGOUT_REDIRECT
     },
-    clientAssertionSigningKey: AUTH0_CLIENT_ASSERTION_SIGNING_KEY,
-    clientAssertionSigningAlg: AUTH0_CLIENT_ASSERTION_SIGNING_ALG
+    clientAssertionSigningKey: ICANID_CLIENT_ASSERTION_SIGNING_KEY,
+    clientAssertionSigningAlg: ICANID_CLIENT_ASSERTION_SIGNING_ALG
   });
 
   const nextConfig = {
@@ -568,7 +568,7 @@ export const getConfig = (params: ConfigParameters = {}): { baseConfig: BaseConf
       unauthorized: baseParams.routes?.unauthorized || '/api/auth/401'
     },
     identityClaimFilter: baseConfig.identityClaimFilter,
-    organization: organization || AUTH0_ORGANIZATION
+    organization: organization || ICANID_ORGANIZATION
   };
 
   return { baseConfig, nextConfig };

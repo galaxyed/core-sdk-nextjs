@@ -3,8 +3,8 @@ import { NextAuthenticatedApiRequest } from '@serverless-jwt/next/dist/types';
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 const verifyJwt = NextJwtVerifier({
-  issuer: process.env.AUTH0_ISSUER_BASE_URL,
-  audience: process.env.AUTH0_AUDIENCE
+  issuer: process.env.ICANID_ISSUER_BASE_URL,
+  audience: process.env.ICANID_AUDIENCE
 });
 
 const requireScope = (scope: string, apiRoute: NextApiHandler) =>

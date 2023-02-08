@@ -10,7 +10,7 @@ import {
   loginHandler as baseLoginHandler,
   logoutHandler as baseLogoutHandler,
   callbackHandler as baseCallbackHandler
-} from './auth0-session';
+} from './icanid-session';
 import {
   handlerFactory,
   callbackHandler,
@@ -63,13 +63,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 /**
  * The SDK server instance.
  *
- * This is created for you when you use the named exports, or you can create your own using {@link InitAuth0}.
+ * This is created for you when you use the named exports, or you can create your own using {@link InitICANID}.
  *
  * See {@link ConfigParameters} for more info.
  *
  * @category Server
  */
-export interface Auth0Server {
+export interface ICANIDServer {
   /**
    * Session getter.
    */
@@ -86,7 +86,7 @@ export interface Auth0Server {
   getAccessToken: GetAccessToken;
 
   /**
-   * Login handler which will redirect the user to Auth0.
+   * Login handler which will redirect the user to ICANID.
    */
   handleLogin: HandleLogin;
 
@@ -96,7 +96,7 @@ export interface Auth0Server {
   handleCallback: HandleCallback;
 
   /**
-   * Logout handler which will clear the local session and the Auth0 session.
+   * Logout handler which will clear the local session and the ICANID session.
    */
   handleLogout: HandleLogout;
 
@@ -128,14 +128,14 @@ export interface Auth0Server {
  *
  * @category Server
  */
-export type InitAuth0 = (params?: ConfigParameters) => Auth0Server;
+export type InitICANID = (params?: ConfigParameters) => ICANIDServer;
 
-let instance: Auth0Server & { sessionCache: SessionCache };
+let instance: ICANIDServer & { sessionCache: SessionCache };
 
 const genId = () => crypto.randomBytes(16).toString('hex');
 
 // For using managed instance with named exports.
-function getInstance(): Auth0Server & { sessionCache: SessionCache } {
+function getInstance(): ICANIDServer & { sessionCache: SessionCache } {
   setIsUsingNamedExports();
   if (instance) {
     return instance;
@@ -145,17 +145,17 @@ function getInstance(): Auth0Server & { sessionCache: SessionCache } {
 }
 
 // For creating own instance.
-export const initAuth0: InitAuth0 = (params) => {
+export const initICANID: InitICANID = (params) => {
   setIsUsingOwnInstance();
   const { sessionCache, ...publicApi } = _initAuth(params); // eslint-disable-line @typescript-eslint/no-unused-vars
   return publicApi;
 };
 
-export const _initAuth = (params?: ConfigParameters): Auth0Server & { sessionCache: SessionCache } => {
+export const _initAuth = (params?: ConfigParameters): ICANIDServer & { sessionCache: SessionCache } => {
   const { baseConfig, nextConfig } = getConfig({ ...params, session: { genId, ...params?.session } });
 
   // Init base layer (with base config)
-  const getClient = clientFactory(baseConfig, { name: 'nextjs-auth0', version });
+  const getClient = clientFactory(baseConfig, { name: 'icanid-sdk-nextjs', version });
   const transientStore = new TransientStore(baseConfig);
 
   const sessionStore = baseConfig.session.store
@@ -232,7 +232,7 @@ export {
   MissingStateParamError,
   IdentityProviderError,
   ApplicationError
-} from './auth0-session';
+} from './icanid-session';
 
 export {
   ConfigParameters,

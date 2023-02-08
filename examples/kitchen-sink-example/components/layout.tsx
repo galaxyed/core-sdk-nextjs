@@ -6,7 +6,7 @@ import Header from './header';
 const Layout = ({ children }: React.PropsWithChildren<unknown>): React.ReactElement => (
   <>
     <Head>
-      <title>Next.js with Auth0</title>
+      <title>Next.js with ICANID</title>
     </Head>
 
     <Header />

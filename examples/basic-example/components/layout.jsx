@@ -6,7 +6,7 @@ import Header from './header';
 const Layout = ({ children }) => (
   <>
     <Head>
-      <title>Next.js with Auth0</title>
+      <title>Next.js SDK with ICANID</title>
     </Head>
 
     <Header />

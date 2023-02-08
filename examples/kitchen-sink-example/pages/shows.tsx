@@ -2,7 +2,7 @@ import React from 'react';
 
 import useApi from '../lib/use-api';
 import Layout from '../components/layout';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
+import { withPageAuthRequired } from '@icanid/icanid-sdk-nextjs/client';
 
 type TVShow = { show: { name: string } };
 

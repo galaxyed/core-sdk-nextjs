@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-auth0-example",
+  "name": "nextjs-icanid-example",
   "version": "1.0.0",
-  "description": "Example of how to sign in to your Next.js application using Auth0",
+  "description": "Example of how to sign in to your Next.js application using ICANID",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@auth0/nextjs-auth0": "file:../../",
+    "@icanid/icanid-sdk-nextjs": "file:../../",
     "next": "file:../../node_modules/next",
     "react": "file:../../node_modules/react",
     "react-dom": "file:../../node_modules/react-dom"
