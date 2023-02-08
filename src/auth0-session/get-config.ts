@@ -59,7 +59,7 @@ const paramsSchema = Joi.object({
     scope: Joi.string()
       .optional()
       .pattern(/\bopenid\b/, 'contains openid')
-      .default('openid profile email'),
+      .default('openid offline'),
     response_mode: Joi.string()
       .optional()
       .when('response_type', {

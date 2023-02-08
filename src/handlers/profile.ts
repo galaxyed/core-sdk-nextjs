@@ -108,7 +108,7 @@ export default function profileHandler(
   getAccessToken: GetAccessToken,
   sessionCache: SessionCache
 ): HandleProfile {
-  const profile: ProfileHandler = async (req: NextApiRequest, res: NextApiResponse, options = {}): Promise<void> => {
+  const profile: ProfileHandler = async (req: NextApiRequest, res: NextApiResponse, options = { refetch: true }): Promise<void> => {
     try {
       assertReqRes(req, res);
 
@@ -132,7 +132,7 @@ export default function profileHandler(
         let newSession = fromJson({
           ...session,
           user: {
-            ...session.user,
+            // ...session.user,
             ...userInfo
           }
         }) as Session;

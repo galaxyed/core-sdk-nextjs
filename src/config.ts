@@ -4,6 +4,7 @@ import type { LoginOptions } from './auth0-session/config';
 import { SessionStore } from './auth0-session/session/stateful-session';
 import Session from './session/session';
 import { DeepPartial, get as getBaseConfig } from './auth0-session/get-config';
+import type { ClientAuthMethod } from 'openid-client';
 
 /**
  * @category server
@@ -475,6 +476,7 @@ export const getConfig = (params: ConfigParameters = {}): { baseConfig: BaseConf
   const AUTH0_BASE_URL = process.env.AUTH0_BASE_URL;
   const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
   const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
+  const AUTH0_CLIENT_AUTH_METHOD = (process.env.AUTH0_CLIENT_AUTH_METHOD || 'client_secret_basic') as DeepPartial<ClientAuthMethod>;
   const AUTH0_CLOCK_TOLERANCE = process.env.AUTH0_CLOCK_TOLERANCE;
   const AUTH0_HTTP_TIMEOUT = process.env.AUTH0_HTTP_TIMEOUT;
   const AUTH0_ENABLE_TELEMETRY = process.env.AUTH0_ENABLE_TELEMETRY;
@@ -512,6 +514,7 @@ export const getConfig = (params: ConfigParameters = {}): { baseConfig: BaseConf
     baseURL: baseURL,
     clientID: AUTH0_CLIENT_ID,
     clientSecret: AUTH0_CLIENT_SECRET,
+    clientAuthMethod: AUTH0_CLIENT_AUTH_METHOD,
     clockTolerance: num(AUTH0_CLOCK_TOLERANCE),
     httpTimeout: num(AUTH0_HTTP_TIMEOUT),
     enableTelemetry: bool(AUTH0_ENABLE_TELEMETRY),
