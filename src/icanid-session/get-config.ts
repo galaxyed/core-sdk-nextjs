@@ -53,7 +53,7 @@ const paramsSchema = Joi.object({
   })
     .default()
     .unknown(false),
-  auth0Logout: Joi.boolean().optional().default(false),
+  icanidLogout: Joi.boolean().optional().default(false),
   authorizationParams: Joi.object({
     response_type: Joi.string().optional().valid('id_token', 'code id_token', 'code').default('id_token'),
     scope: Joi.string()
@@ -120,7 +120,7 @@ const paramsSchema = Joi.object({
     .default(['aud', 'iss', 'iat', 'exp', 'nbf', 'nonce', 'azp', 'auth_time', 's_hash', 'at_hash', 'c_hash']),
   idpLogout: Joi.boolean()
     .optional()
-    .default((parent) => parent.auth0Logout || false),
+    .default((parent) => parent.icanidLogout || false),
   idTokenSigningAlg: Joi.string().insensitive().not('none').optional().default('RS256'),
   issuerBaseURL: Joi.string().uri().required(),
   legacySameSiteCookie: Joi.boolean().optional().default(true),

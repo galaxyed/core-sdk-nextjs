@@ -11,7 +11,7 @@ import { assertReqRes } from '../utils/assert';
  *
  * ```js
  * // pages/api/update-user.js
- * import { getSession, updateSession } from '@auth0/nextjs-auth0';
+ * import { getSession, updateSession } from '@icanid/icanid-sdk-nextjs';
  *
  * export default async function updateSession(req, res) {
  *   if (req.method === 'PUT') {

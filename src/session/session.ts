@@ -1,5 +1,5 @@
 import type { TokenSet } from 'openid-client';
-import { Config } from '../auth0-session';
+import { Config } from '../icanid-session';
 import { NextConfig } from '../config';
 
 /**
@@ -46,7 +46,7 @@ export default class Session {
    * The refresh token, which is used to request a new access token.
    *
    * **IMPORTANT** You need to request the `offline_access` scope on login to get a refresh token
-   * from Auth0.
+   * from ICANID.
    */
   refreshToken?: string | undefined;
 

@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { NextApiRequest, NextApiResponse } from 'next';
 import type { errors } from 'openid-client';
-import { ClientFactory, IdentityProviderError } from '../auth0-session';
+import { ClientFactory, IdentityProviderError } from '../icanid-session';
 import { AccessTokenError, AccessTokenErrorCode } from '../utils/errors';
 import { intersect, match } from '../utils/array';
 import { Session, SessionCache, fromTokenSet } from '../session';
@@ -25,7 +25,7 @@ export interface AccessTokenRequest {
    * the access token has expired or not.
    *
    * **IMPORTANT** You need to request the `offline_access` scope on login to get a refresh token
-   * from Auth0.
+   * from ICANID.
    */
   refresh?: boolean;
 
@@ -40,7 +40,7 @@ export interface AccessTokenRequest {
    *
    * ```js
    * // pages/api/my-handler.js
-   * import { getAccessToken } from '@auth0/nextjs-auth0';
+   * import { getAccessToken } from '@icanid/icanid-sdk-nextjs';
    *
    * const afterRefresh = (req, res, session) => {
    *   session.user.customProperty = 'foo';

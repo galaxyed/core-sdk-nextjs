@@ -36,7 +36,7 @@ export default function get(config: Config, { name, version }: Telemetry): Clien
         'User-Agent': `${name}/${version}`,
         ...(config.enableTelemetry
           ? {
-              'Auth0-Client': Buffer.from(
+              'ICANID-Client': Buffer.from(
                 JSON.stringify({
                   name,
                   version,
@@ -110,7 +110,7 @@ export default function get(config: Config, { name, version }: Telemetry): Clien
     client[custom.clock_tolerance] = config.clockTolerance;
 
     if (config.idpLogout && !issuer.end_session_endpoint) {
-      if (config.auth0Logout || (url.parse(issuer.metadata.issuer).hostname as string).match('\\.auth0\\.com$')) {
+      if (config.icanidLogout || (url.parse(issuer.metadata.issuer).hostname as string).match('\\.icanid\\.com$')) {
         Object.defineProperty(client, 'endSessionUrl', {
           value(params: EndSessionParameters) {
             const { id_token_hint, post_logout_redirect_uri, ...extraParams } = params;

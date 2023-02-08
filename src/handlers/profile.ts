@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 import { NextApiResponse, NextApiRequest } from 'next';
-import { ClientFactory } from '../auth0-session';
+import { ClientFactory } from '../icanid-session';
 import { SessionCache, Session, fromJson, GetAccessToken } from '../session';
 import { assertReqRes } from '../utils/assert';
 import { ProfileHandlerError, HandlerErrorCause } from '../utils/errors';
@@ -44,8 +44,8 @@ export type ProfileOptionsProvider = (req: NextApiRequest) => ProfileOptions;
  * @example Pass an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleProfile } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleProfile } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   profile: handleProfile({ refetch: true })
@@ -55,8 +55,8 @@ export type ProfileOptionsProvider = (req: NextApiRequest) => ProfileOptions;
  * @example Pass a function that receives the request and returns an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleProfile } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleProfile } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   profile: handleProfile((req) => {
@@ -70,7 +70,7 @@ export type ProfileOptionsProvider = (req: NextApiRequest) => ProfileOptions;
  * @example Override the profile handler
  *
  * ```js
- * import { handleAuth, handleProfile } from '@auth0/nextjs-auth0';
+ * import { handleAuth, handleProfile } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   profile: async (req, res) => {

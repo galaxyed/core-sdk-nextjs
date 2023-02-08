@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 import { NextApiResponse, NextApiRequest } from 'next';
-import { AuthorizationParameters, HandleLogin as BaseHandleLogin } from '../auth0-session';
+import { AuthorizationParameters, HandleLogin as BaseHandleLogin } from '../icanid-session';
 import toSafeRedirect from '../utils/url-helpers';
 import { assertReqRes } from '../utils/assert';
 import { BaseConfig, NextConfig } from '../config';
@@ -10,8 +10,8 @@ import { HandlerErrorCause, LoginHandlerError } from '../utils/errors';
  * Use this to store additional state for the user before they visit the identity provider to log in.
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleLogin } from '@icanid/icanid-sdk-nextjs';
  *
  * const getLoginState = (req, loginOptions) => {
  *   return { basket_id: getBasketId(req) };
@@ -44,13 +44,13 @@ export interface AuthorizationParams extends Partial<AuthorizationParameters> {
    * By default no connection is specified, so the Universal Login page will be displayed.
    *
    * ```js
-   * import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+   * import { handleAuth, handleLogin } from '@icanid/icanid-sdk-nextjs';
    *
    * export default handleAuth({
    *   login: async (req, res) => {
    *     try {
    *       await handleLogin(req, res, {
-   *         // Get the connection name from the Auth0 Dashboard
+   *         // Get the connection name from the ICANID Dashboard
    *         authorizationParams: { connection: 'github' }
    *       });
    *     } catch (error) {
@@ -66,7 +66,7 @@ export interface AuthorizationParams extends Partial<AuthorizationParameters> {
    * Provider scopes for OAuth2/social connections, such as GitHub or Google.
    *
    * ```js
-   * import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+   * import { handleAuth, handleLogin } from '@icanid/icanid-sdk-nextjs';
    *
    * export default handleAuth({
    *   login: async (req, res) => {
@@ -94,7 +94,7 @@ export interface AuthorizationParams extends Partial<AuthorizationParameters> {
    *
    * ```js
    * // pages/api/invite.js
-   * import { handleLogin } from '@auth0/nextjs-auth0';
+   * import { handleLogin } from '@icanid/icanid-sdk-nextjs';
    *
    * export default async function invite(req, res) {
    *   try {
@@ -126,7 +126,7 @@ export interface AuthorizationParams extends Partial<AuthorizationParameters> {
   organization?: string;
 
   /**
-   * Provides a hint to Auth0 as to what flow should be displayed. The default behavior is to show a
+   * Provides a hint to ICANID as to what flow should be displayed. The default behavior is to show a
    * login page but you can override this by passing 'signup' to show the signup page instead.
    *
    * This only affects the New Universal Login Experience.
@@ -173,8 +173,8 @@ export type LoginOptionsProvider = (req: NextApiRequest) => LoginOptions;
  * @example Pass an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleLogin } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   login: handleLogin({
@@ -186,8 +186,8 @@ export type LoginOptionsProvider = (req: NextApiRequest) => LoginOptions;
  * @example Pass a function that receives the request and returns an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleLogin } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   login: handleLogin((req) => {
@@ -203,7 +203,7 @@ export type LoginOptionsProvider = (req: NextApiRequest) => LoginOptions;
  * @example Override the login handler
  *
  * ```js
- * import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+ * import { handleAuth, handleLogin } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   login: async (req, res) => {

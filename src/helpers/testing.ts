@@ -1,4 +1,4 @@
-import { Config as BaseConfig, CookieConfig, StatelessSession, NodeCookies as Cookies } from '../auth0-session';
+import { Config as BaseConfig, CookieConfig, StatelessSession, NodeCookies as Cookies } from '../icanid-session';
 import { Session } from '../session';
 
 /**

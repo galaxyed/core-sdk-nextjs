@@ -8,7 +8,7 @@ import { assertReqRes } from '../utils/assert';
  *
  * ```js
  * // pages/api/protected-route.js
- * import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
+ * import { withApiAuthRequired, getSession } from '@icanid/icanid-sdk-nextjs';
  *
  * export default withApiAuthRequired(function ProtectedRoute(req, res) {
  *   const session = getSession(req, res);

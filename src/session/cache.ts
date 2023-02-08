@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { NextApiRequest, NextApiResponse } from 'next';
 import type { TokenSet } from 'openid-client';
-import { Config, SessionCache as ISessionCache, AbstractSession } from '../auth0-session';
+import { Config, SessionCache as ISessionCache, AbstractSession } from '../icanid-session';
 import Session, { fromJson, fromTokenSet } from './session';
 
 export default class SessionCache<

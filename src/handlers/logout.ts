@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 import { NextApiResponse, NextApiRequest } from 'next';
-import { HandleLogout as BaseHandleLogout } from '../auth0-session';
+import { HandleLogout as BaseHandleLogout } from '../icanid-session';
 import { assertReqRes } from '../utils/assert';
 import { HandlerErrorCause, LogoutHandlerError } from '../utils/errors';
 
@@ -39,8 +39,8 @@ export type LogoutOptionsProvider = (req: NextApiRequest) => LogoutOptions;
  * @example Pass an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleLogout } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleLogout } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   logout: handleLogout({ returnTo: 'https://example.com' })
@@ -50,8 +50,8 @@ export type LogoutOptionsProvider = (req: NextApiRequest) => LogoutOptions;
  * @example Pass a function that receives the request and returns an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleLogout } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleLogout } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   logout: handleLogout((req) => {
@@ -65,7 +65,7 @@ export type LogoutOptionsProvider = (req: NextApiRequest) => LogoutOptions;
  * @example Override the logout handler
  *
  * ```js
- * import { handleAuth, handleLogout } from '@auth0/nextjs-auth0';
+ * import { handleAuth, handleLogout } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   logout: async (req, res) => {

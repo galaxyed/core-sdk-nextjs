@@ -76,7 +76,7 @@ type UserFetcher = (url: string) => Promise<UserProfile | undefined>;
  * ```js
  * // pages/_app.js
  * import React from 'react';
- * import { UserProvider } from '@auth0/nextjs-auth0/client';
+ * import { UserProvider } from '@icanid/icanid-sdk-nextjs/client';
  *
  * export default function App({ Component, pageProps }) {
  *   // If you've used `withPageAuthRequired`, `pageProps.user` can prefill the hook
@@ -140,7 +140,7 @@ export type UseUser = () => UserContext;
  * ```js
  * // pages/profile.js
  * import Link from 'next/link';
- * import { useUser } from '@auth0/nextjs-auth0/client';
+ * import { useUser } from '@icanid/icanid-sdk-nextjs/client';
  *
  * export default function Profile() {
  *   const { user, error, isLoading } = useUser();
@@ -190,7 +190,7 @@ const userFetcher: UserFetcher = async (url) => {
 export default ({
   children,
   user: initialUser,
-  profileUrl = process.env.NEXT_PUBLIC_AUTH0_PROFILE || '/api/auth/me',
+  profileUrl = process.env.NEXT_PUBLIC_ICANID_PROFILE || '/api/auth/me',
   loginUrl,
   fetcher = userFetcher
 }: UserProviderProps): ReactElement<UserContext> => {

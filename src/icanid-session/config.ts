@@ -19,9 +19,9 @@ export interface Config {
   session: SessionConfig;
 
   /**
-   * Boolean value to enable Auth0's logout feature.
+   * Boolean value to enable ICANID's logout feature.
    */
-  auth0Logout: boolean;
+  icanidLogout: boolean;
 
   /**
    * URL parameters used when redirecting users to the authorization server to log in.
@@ -47,7 +47,7 @@ export interface Config {
    *   authorizationParams: {
    *     response_type: 'code',
    *     scope: 'openid profile email read:reports',
-   *     audience: 'https://your-auth0-api-identifier'
+   *     audience: 'https://your-icanid-api-identifier'
    *   }
    * }));
    * ```
@@ -100,7 +100,7 @@ export interface Config {
 
   /**
    * Boolean value to opt-out of sending the library and Node.js version to your authorization server
-   * via the `Auth0-Client` header. Defaults to `true`.
+   * via the `ICANID-Client` header. Defaults to `true`.
    */
   enableTelemetry: boolean;
 
@@ -172,7 +172,7 @@ export interface Config {
   /**
    * Private key for use with `private_key_jwt` clients.
    * This should be a string that is the contents of a PEM file.
-   * you can also use the `AUTH0_CLIENT_ASSERTION_SIGNING_KEY` environment variable.
+   * you can also use the `ICANID_CLIENT_ASSERTION_SIGNING_KEY` environment variable.
    */
   clientAssertionSigningKey?: string;
 
@@ -181,7 +181,7 @@ export interface Config {
    * Uses one of `token_endpoint_auth_signing_alg_values_supported` if not specified.
    * If the Authorization Server discovery document does not list `token_endpoint_auth_signing_alg_values_supported`
    * this property will be required.
-   * You can also use the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+   * You can also use the `ICANID_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
    */
   clientAssertionSigningAlg?: string;
 }
@@ -327,7 +327,7 @@ export interface LogoutOptions {
   /**
    * Additional custom parameters to pass to the logout endpoint.
    *
-   * @example pass the federated logout param per https://auth0.com/docs/authenticate/login/logout/log-users-out-of-idps
+   * @example pass the federated logout param per https://id.ican.vn/docs/authenticate/login/logout/log-users-out-of-idps
    *
    * ```js
    * handleLogout(req, res, { logoutParams: { federated: '' } });

@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 import { strict as assert } from 'assert';
 import { NextApiResponse, NextApiRequest } from 'next';
-import { AuthorizationParameters, HandleCallback as BaseHandleCallback } from '../auth0-session';
+import { AuthorizationParameters, HandleCallback as BaseHandleCallback } from '../icanid-session';
 import { Session } from '../session';
 import { assertReqRes } from '../utils/assert';
 import { NextConfig } from '../config';
@@ -14,8 +14,8 @@ import { CallbackHandlerError, HandlerErrorCause } from '../utils/errors';
  * @example Validate additional claims
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleCallback } from '@icanid/icanid-sdk-nextjs';
  *
  * const afterCallback = (req, res, session, state) => {
  *   if (session.user.isAdmin) {
@@ -39,8 +39,8 @@ import { CallbackHandlerError, HandlerErrorCause } from '../utils/errors';
  * @example Modify the session after login
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleCallback } from '@icanid/icanid-sdk-nextjs';
  *
  * const afterCallback = (req, res, session, state) => {
  *   session.user.customProperty = 'foo';
@@ -62,8 +62,8 @@ import { CallbackHandlerError, HandlerErrorCause } from '../utils/errors';
  * @example Redirect successful login based on claim
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleCallback } from '@icanid/icanid-sdk-nextjs';
  *
  * const afterCallback = (req, res, session, state) => {
  *   if (!session.user.isAdmin) {
@@ -138,8 +138,8 @@ export type CallbackOptionsProvider = (req: NextApiRequest) => CallbackOptions;
  * @example Pass an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleCallback } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   callback: handleCallback({ redirectUri: 'https://example.com' })
@@ -149,8 +149,8 @@ export type CallbackOptionsProvider = (req: NextApiRequest) => CallbackOptions;
  * @example Pass a function that receives the request and returns an options object
  *
  * ```js
- * // pages/api/auth/[...auth0].js
- * import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
+ * // pages/api/auth/[...icanid].js
+ * import { handleAuth, handleCallback } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   callback: handleCallback((req) => {
@@ -164,7 +164,7 @@ export type CallbackOptionsProvider = (req: NextApiRequest) => CallbackOptions;
  * @example Override the callback handler
  *
  * ```js
- * import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
+ * import { handleAuth, handleCallback } from '@icanid/icanid-sdk-nextjs';
  *
  * export default handleAuth({
  *   callback: async (req, res) => {

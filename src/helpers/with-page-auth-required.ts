@@ -9,7 +9,7 @@ import { ParsedUrlQuery } from 'querystring';
  *
  * ```js
  * // pages/profile.js
- * import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+ * import { withPageAuthRequired } from '@icanid/icanid-sdk-nextjs';
  *
  * export default function Profile({ user }) {
  *   return <div>Hello {user.name}</div>;
@@ -40,7 +40,7 @@ export type PageRoute<P, Q extends ParsedUrlQuery = ParsedUrlQuery> = (
  *
  * ```js
  * // pages/protected-page.js
- * import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
+ * import { getSession, withPageAuthRequired } from '@icanid/icanid-sdk-nextjs';
  *
  * export default function ProtectedPage({ user, customProp }) {
  *   return <div>Protected content</div>;
@@ -76,7 +76,7 @@ export type WithPageAuthRequiredOptions<
  *
  * ```js
  * // pages/protected-page.js
- * import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+ * import { withPageAuthRequired } from '@icanid/icanid-sdk-nextjs';
  *
  * export default function ProtectedPage() {
  *   return <div>Protected content</div>;
